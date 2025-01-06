@@ -1,0 +1,54 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout do código do repositório
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Configurar Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # Instalar dependências
+      - name: Install dependencies
+        run: npm install
+
+      # Rodar testes
+      - name: Run tests
+        run: npm test
+
+      # Configuração do Docker
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # Construir imagem Docker
+      - name: Build and Push Docker Image
+        run: |
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/plataforma-educacional:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/plataforma-educacional:latest
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Deploy Placeholder
+        run: echo "Configure o deploy de acordo com o seu ambiente (Heroku, AWS, etc.)"
