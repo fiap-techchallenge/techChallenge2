@@ -16,6 +16,7 @@ router.get("/search", async (req, res) => {
       [Op.or]: [
         { title: { [Op.like]: `%${q}%` } },
         { content: { [Op.like]: `%${q}%` } },
+        { author: { [Op.like]: `%${q}%` } },
       ],
     },
   });
