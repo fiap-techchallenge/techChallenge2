@@ -28,7 +28,7 @@ router.get("/:id", async (req, res) => {
   if (post) {
     res.json(post);
   } else {
-    res.status(404).send("Sinto muito, postagem não encontrado");
+    res.status(404).send("Sinto muito, postagem não encontrada");
   }
 });
 
@@ -47,7 +47,7 @@ router.put("/:id", async (req, res) => {
     await post.update({ title, content, author });
     res.json(post);
   } else {
-    res.status(404).send("Postagem não encontrado");
+    res.status(404).send("Postagem não encontrada");
   }
 });
 
