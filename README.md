@@ -1,6 +1,9 @@
 # Plataforma Educacional - FIAP Tech Challenge
 
-Este repositório contém o backend da **Plataforma Educacional**, desenvolvido como parte da avaliação do programa de pós-graduação Tech da FIAP. A aplicação permite que professores publiquem aulas e compartilhem conhecimento de forma prática, centralizada e tecnológica.
+Este repositório contém o backend da **Plataforma Educacional**, desenvolvido
+como parte da avaliação do programa de pós-graduação Tech da FIAP. A aplicação
+permite que professores publiquem aulas e compartilhem conhecimento de forma
+prática, centralizada e tecnológica.
 
 ---
 
@@ -72,8 +75,8 @@ Este repositório contém o backend da **Plataforma Educacional**, desenvolvido 
 
 ### 📄 Documentação da API
 
-Acesse a documentação completa em: `http://localhost:3000/api-docs`.
-A documentação foi gerada com Swagger.
+Acesse a documentação completa em: `http://localhost:3000/api-docs`. A
+documentação foi gerada com Swagger.
 
 ### ✅ Testes
 
@@ -93,7 +96,7 @@ Construção e execução com Docker Compose
    ```
 2. Execute as migrações do banco de dados:
    ```bash
-    docker-compose exec app npx sequelize-cli db:migrate
+   docker-compose exec app npx sequelize-cli db:migrate
    ```
 3. O servidor estará disponível em `http://localhost:3000`.
 
@@ -105,12 +108,13 @@ Construção e execução manual
    ```
 2. Rode o contêiner::
    ```bash
-    docker run -p 3000:3000 plataforma-educacional
+   docker run -p 3000:3000 plataforma-educacional
    ```
 
 ### 🚀 CI/CD
 
-Este projeto utiliza GitHub Actions para automação de testes e deploy. O workflow está configurado no arquivo node.js.yml.
+Este projeto utiliza GitHub Actions para automação de testes e deploy. O
+workflow está configurado no arquivo node.js.yml.
 
 ### 📂 Estrutura do Projeto
 
