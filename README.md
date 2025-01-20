@@ -44,7 +44,7 @@ prática, centralizada e tecnológica.
 1. Clone o repositório:
    ```bash
    git clone https://github.com/fiap-techchallenge/techChallenge2.git
-   cd fiapTech
+   cd techChallenge2
    ```
 2. Instale as dependências:
    ```bash
@@ -54,13 +54,11 @@ prática, centralizada e tecnológica.
    ```bash
    docker-compose up --build
    ```
-4. Execute as migrações do banco de dados:
+4. Abra o terminal e no caminho salvo para "techChallenge2" execute as migrações do banco de dados:
    ```bash
    docker-compose exec app npx sequelize-cli db:migrate
    ```
-5. Inicie o servidor em modo de desenvolvimento:
-   ```bash
-   npm run dev
+
    ```
    O servidor estará disponível em `http://localhost:3001`.
 
