@@ -13,13 +13,23 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  Post.init({
-    title: DataTypes.STRING,
-    content: DataTypes.TEXT,
-    author: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Post',
-  });
+// ...existing code...
+Post.init({
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  content: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  author: {
+    type: DataTypes.STRING,
+    allowNull: false
+  }
+}, {
+  sequelize,
+  modelName: 'Post',
+});
   return Post;
 };

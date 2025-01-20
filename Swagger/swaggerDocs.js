@@ -8,10 +8,7 @@
  *         - title
  *         - content
  *         - author
- *       properties:
- *         id:
- *           type: integer
- *           description: ID do post
+ *       properties:       
  *         title:
  *           type: string
  *           description: Título do post
@@ -21,14 +18,6 @@
  *         author:
  *           type: string
  *           description: Autor do post
- *         createdAt:
- *           type: string
- *           format: date-time
- *           description: Data de criação do post
- *         updatedAt:
- *           type: string
- *           format: date-time
- *           description: Data de atualização do post
  */
 
 /**

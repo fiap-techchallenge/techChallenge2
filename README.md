@@ -43,7 +43,7 @@ prática, centralizada e tecnológica.
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/sammysc/fiapTech.git
+   git clone https://github.com/fiap-techchallenge/techChallenge2.git
    cd fiapTech
    ```
 2. Instale as dependências:
@@ -62,7 +62,7 @@ prática, centralizada e tecnológica.
    ```bash
    npm run dev
    ```
-   O servidor estará disponível em `http://localhost:3000`.
+   O servidor estará disponível em `http://localhost:3001`.
 
 ### 📖 Endpoints da API
 
@@ -75,7 +75,7 @@ prática, centralizada e tecnológica.
 
 ### 📄 Documentação da API
 
-Acesse a documentação completa em: `http://localhost:3000/api-docs`. A
+Acesse a documentação completa em: `http://localhost:3001/api-docs`. A
 documentação foi gerada com Swagger.
 
 ### ✅ Testes
@@ -98,7 +98,7 @@ Construção e execução com Docker Compose
    ```bash
    docker-compose exec app npx sequelize-cli db:migrate
    ```
-3. O servidor estará disponível em `http://localhost:3000`.
+3. O servidor estará disponível em `http://localhost:3001`.
 
 Construção e execução manual
 
@@ -108,7 +108,7 @@ Construção e execução manual
    ```
 2. Rode o contêiner::
    ```bash
-   docker run -p 3000:3000 plataforma-educacional
+   docker run -p 3001:3001 plataforma-educacional
    ```
 
 ### 🚀 CI/CD

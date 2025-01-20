@@ -32,10 +32,18 @@ router.get("/:id", async (req, res) => {
 });
 
 // POST /posts - Criação de postagens
-router.post("/", async (req, res) => {
-  const { title, content, author } = req.body;
-  const post = await Post.create({ title, content, author });
-  res.status(201).json(post);
+
+router.post('/', async (req, res) => {
+  try {
+    const { title, content, author } = req.body;
+    const post = await Post.create({ title, content, author });
+    res.status(201).json(post);
+  } catch (error) {
+    if (error.name === 'SequelizeValidationError') {
+      return res.status(400).json({ error: error.errors.map(e => e.message) });
+    }
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 // PUT /posts/:id - Edição de postagens

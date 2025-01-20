@@ -3,21 +3,21 @@
     "username": "user",
     "password": "password",
     "database": "plataforma_educacional",
-    "host": "localhost",
+    "host": "db",
     "dialect": "postgres"
   },
   "test": {
     "username": "user",
     "password": "password",
     "database": "plataforma_educacional",
-    "host": "localhost",
+    "host": "db",
     "dialect": "postgres"
   },
   "production": {
     "username": "user",
     "password": "password",
     "database": "plataforma_educacional",
-    "host": "localhost",
+    "host": "db",
     "dialect": "postgres"
   }
 }
