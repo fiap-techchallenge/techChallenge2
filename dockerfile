@@ -13,6 +13,9 @@ RUN npm install
 # Copiar o restante do código da aplicação
 COPY . .
 
+# Sqlite3 precisa ser recompilado para testes com Jest
+RUN npm rebuild sqlite3 --build-from-source
+
 # Expor a porta em que sua aplicação roda
 EXPOSE 3001
 

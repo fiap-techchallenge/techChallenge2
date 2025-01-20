@@ -81,7 +81,7 @@ documentação foi gerada com Swagger.
 Para executar os testes unitários e de integração, utilize o comando:
 
 ```bash
-npm test
+docker compose run app npm run test
 ```
 
 ### 🐳 Docker
