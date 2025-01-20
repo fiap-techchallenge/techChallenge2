@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3020;
+const port = 3000;
 const postsRouter = require("./routes/posts");
 const { swaggerUi, specs } = require("./Swagger/swagger");
 

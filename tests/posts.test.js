@@ -4,26 +4,27 @@ const { Sequelize, DataTypes } = require("sequelize");
 const postsRouter = require("../routes/posts");
 const { Post } = require("../models");
 
-afterEach(async () => {
-  await Post.destroy({ where: {}, truncate: true }); // Limpa a tabela de posts
+const sequelize = new Sequelize("plataforma_educacional", "user", "password", {
+  host: "db",
+  dialect: "postgres",
 });
 
-const sequelize = new Sequelize({
-  dialect: "sqlite",
-  storage: ":memory:", // Define o armazenamento em memória
-});
+const app = express();
+app.use(express.json());
+app.use("/posts", postsRouter);
 
-const app = express(); // Cria uma instância do Express
-app.use(express.json()); // Middleware para o Express interpretar JSON
-app.use("/posts", postsRouter); // Rota de posts
-
-beforeAll(async () => { // Antes de todos os testes, sincroniza o modelo com o banco de dados
+beforeAll(async () => {
+  await sequelize.authenticate();
   await sequelize.sync();
-});
+}, 30000); // Increase timeout to 30 seconds
 
 afterAll(async () => {
-  await sequelize.close(); // Após todos os testes, fecha a conexão com o banco de dados
-});
+  await sequelize.close();
+}, 30000); // Increase timeout to 30 seconds
+
+afterEach(async () => {
+  await Post.destroy({ where: {}, truncate: true });
+}, 30000); // Increase timeout to 30 seconds
 
 describe("POST /posts", () => { // Testes para a rota de criação de postagens
   it("criação de uma nova postagem", async () => {
