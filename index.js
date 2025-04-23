@@ -4,6 +4,9 @@ const cors = require("cors");
 const app = express();
 const port = 3001;
 const postsRouter = require("./routes/posts");
+const teachersRouter = require("./routes/teachers");
+const studentsRouter = require("./routes/students");
+const { router: authRouter } = require("./routes/auth");
 const { swaggerUi, specs } = require("./Swagger/swagger");
 
 app.use(
@@ -15,6 +18,9 @@ app.use(
 
 app.use(express.json());
 app.use("/posts", postsRouter);
+app.use("/teachers", teachersRouter);
+app.use("/students", studentsRouter);
+app.use("/auth", authRouter);
 
 // Configurar o Swagger
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));

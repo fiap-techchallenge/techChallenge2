@@ -1,23 +1,27 @@
-# Usar uma imagem base Node.js
+# Use a Node.js base image
 FROM node:18
 
-# Definir o diretório de trabalho no contêiner
+# Set the working directory in the container
 WORKDIR /usr/src/app
 
-# Copiar package.json e package-lock.json
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Instalar dependências
-RUN npm install
+# Install dependencies with clean slate
+RUN npm ci
 
-# Copiar o restante do código da aplicação
+# Copy the rest of the application code
 COPY . .
 
-# Sqlite3 precisa ser recompilado para testes com Jest
+# Rebuild bcrypt from scratch to ensure compatibility with the container environment
+RUN npm uninstall bcrypt
+RUN npm install bcrypt --build-from-source
+
+# Rebuild sqlite3 for tests with Jest
 RUN npm rebuild sqlite3 --build-from-source
 
-# Expor a porta em que sua aplicação roda
+# Expose the port the app runs on
 EXPOSE 3001
 
-# Comando para iniciar a aplicação
+# Command to start the application
 CMD ["npm", "start"]

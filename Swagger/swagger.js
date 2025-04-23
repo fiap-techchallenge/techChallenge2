@@ -7,11 +7,25 @@ const options = {
     info: {
       title: "Tech Challenge FIAP 2ª Fase- Plataforma Educacional",
       version: "1.0.0",
-      description: "API para gerenciamento de postagens",
+      description: "API para gerenciamento de postagens, professores e alunos",
     },
     servers: [
       {
         url: "http://localhost:3001",
+      },
+    ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
       },
     ],
   },
