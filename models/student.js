@@ -48,23 +48,11 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      registration: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          notEmpty: {
-            msg: "O número de matrícula é obrigatório",
-          },
+      userType: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          return "student";
         },
-      },
-      birthDate: {
-        type: DataTypes.DATE,
-        allowNull: true,
-      },
-      phone: {
-        type: DataTypes.STRING,
-        allowNull: true,
       },
     },
     {

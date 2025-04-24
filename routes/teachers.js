@@ -49,8 +49,8 @@ router.get("/:id", async (req, res) => {
 // POST /teachers - Criação de professores
 router.post("/", async (req, res) => {
   try {
-    const { name, email, specialty, phone } = req.body;
-    const teacher = await Teacher.create({ name, email, specialty, phone });
+    const { name, email } = req.body;
+    const teacher = await Teacher.create({ name, email });
     res.status(201).json(teacher);
   } catch (error) {
     if (
@@ -68,11 +68,11 @@ router.post("/", async (req, res) => {
 // PUT /teachers/:id - Edição de professores
 router.put("/:id", async (req, res) => {
   try {
-    const { name, email, specialty, phone } = req.body;
+    const { name, email } = req.body;
     const teacher = await Teacher.findByPk(req.params.id);
 
     if (teacher) {
-      await teacher.update({ name, email, specialty, phone });
+      await teacher.update({ name, email });
       res.json(teacher);
     } else {
       res.status(404).json({ error: "Professor não encontrado" });
@@ -115,7 +115,6 @@ router.get("/search/query", async (req, res) => {
         [Op.or]: [
           { name: { [Op.like]: `%${q}%` } },
           { email: { [Op.like]: `%${q}%` } },
-          { specialty: { [Op.like]: `%${q}%` } },
         ],
       },
     });

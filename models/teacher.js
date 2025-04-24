@@ -48,18 +48,11 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      specialty: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          notEmpty: {
-            msg: "A especialidade é obrigatória",
-          },
+      userType: {
+        type: DataTypes.VIRTUAL,
+        get() {
+          return "teacher";
         },
-      },
-      phone: {
-        type: DataTypes.STRING,
-        allowNull: true,
       },
     },
     {

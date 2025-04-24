@@ -91,7 +91,7 @@ prática, centralizada e tecnológica.
 - **POST /teachers**: Cria um novo registro de professor
 - **PUT /teachers/:id**: Atualiza os dados de um professor existente
 - **DELETE /teachers/:id**: Remove um professor do sistema
-- **GET /teachers/search/query?q=term**: Busca professores por nome, email ou especialidade
+- **GET /teachers/search/query?q=term**: Busca professores por nome ou email
 
 #### Alunos
 
@@ -100,7 +100,7 @@ prática, centralizada e tecnológica.
 - **POST /students**: Cria um novo registro de aluno
 - **PUT /students/:id**: Atualiza os dados de um aluno existente
 - **DELETE /students/:id**: Remove um aluno do sistema
-- **GET /students/search/query?q=term**: Busca alunos por nome, email ou matrícula
+- **GET /students/search/query?q=term**: Busca alunos por nome ou email
 
 ### 🔐 Autenticação e Autorização
 
@@ -117,9 +117,7 @@ Para registrar um novo usuário é necessário enviar os seguintes dados:
   "name": "Nome do Professor",
   "email": "professor@email.com",
   "password": "senha123",
-  "userType": "teacher",
-  "specialty": "Matemática",
-  "phone": "11999998888"
+  "userType": "teacher"
 }
 ```
 
@@ -130,10 +128,7 @@ Para registrar um novo usuário é necessário enviar os seguintes dados:
   "name": "Nome do Aluno",
   "email": "aluno@email.com",
   "password": "senha123",
-  "userType": "student",
-  "registration": "12345",
-  "birthDate": "2000-01-01",
-  "phone": "11999997777"
+  "userType": "student"
 }
 ```
 

@@ -49,14 +49,8 @@ router.get("/:id", async (req, res) => {
 // POST /students - Criação de alunos
 router.post("/", async (req, res) => {
   try {
-    const { name, email, registration, birthDate, phone } = req.body;
-    const student = await Student.create({
-      name,
-      email,
-      registration,
-      birthDate,
-      phone,
-    });
+    const { name, email } = req.body;
+    const student = await Student.create({ name, email });
     res.status(201).json(student);
   } catch (error) {
     if (
@@ -74,11 +68,11 @@ router.post("/", async (req, res) => {
 // PUT /students/:id - Edição de alunos
 router.put("/:id", async (req, res) => {
   try {
-    const { name, email, registration, birthDate, phone } = req.body;
+    const { name, email } = req.body;
     const student = await Student.findByPk(req.params.id);
 
     if (student) {
-      await student.update({ name, email, registration, birthDate, phone });
+      await student.update({ name, email });
       res.json(student);
     } else {
       res.status(404).json({ error: "Aluno não encontrado" });
@@ -121,7 +115,6 @@ router.get("/search/query", async (req, res) => {
         [Op.or]: [
           { name: { [Op.like]: `%${q}%` } },
           { email: { [Op.like]: `%${q}%` } },
-          { registration: { [Op.like]: `%${q}%` } },
         ],
       },
     });

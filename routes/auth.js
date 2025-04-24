@@ -10,7 +10,7 @@ const SALT_ROUNDS = 10;
 // Endpoint de registro unificado para alunos e professores
 router.post("/register", async (req, res) => {
   try {
-    const { name, email, password, userType, ...otherFields } = req.body;
+    const { name, email, password, userType } = req.body;
 
     // Validações básicas
     if (!name || !email || !password || !userType) {
@@ -41,33 +41,16 @@ router.post("/register", async (req, res) => {
     // Criar o usuário baseado no tipo
     let user;
     if (userType === "teacher") {
-      if (!otherFields.specialty) {
-        return res
-          .status(400)
-          .json({ error: "A especialidade é obrigatória para professores" });
-      }
-
       user = await Teacher.create({
         name,
         email,
         password: hashedPassword,
-        specialty: otherFields.specialty,
-        phone: otherFields.phone || null,
       });
     } else {
-      if (!otherFields.registration) {
-        return res
-          .status(400)
-          .json({ error: "O número de matrícula é obrigatório para alunos" });
-      }
-
       user = await Student.create({
         name,
         email,
         password: hashedPassword,
-        registration: otherFields.registration,
-        birthDate: otherFields.birthDate || null,
-        phone: otherFields.phone || null,
       });
     }
 

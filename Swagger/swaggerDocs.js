@@ -23,7 +23,6 @@
  *       required:
  *         - name
  *         - email
- *         - specialty
  *       properties:
  *         id:
  *           type: integer
@@ -34,18 +33,11 @@
  *         email:
  *           type: string
  *           description: Email do professor
- *         specialty:
- *           type: string
- *           description: Especialidade do professor
- *         phone:
- *           type: string
- *           description: Telefone de contato do professor
  *     Student:
  *       type: object
  *       required:
  *         - name
  *         - email
- *         - registration
  *       properties:
  *         id:
  *           type: integer
@@ -56,16 +48,6 @@
  *         email:
  *           type: string
  *           description: Email do aluno
- *         registration:
- *           type: string
- *           description: Número de matrícula do aluno
- *         birthDate:
- *           type: string
- *           format: date
- *           description: Data de nascimento do aluno
- *         phone:
- *           type: string
- *           description: Telefone de contato do aluno
  *     TeacherRegistration:
  *       type: object
  *       required:
@@ -73,7 +55,6 @@
  *         - email
  *         - password
  *         - userType
- *         - specialty
  *       properties:
  *         name:
  *           type: string
@@ -90,12 +71,6 @@
  *           type: string
  *           enum: [teacher]
  *           description: Tipo de usuário (deve ser "teacher")
- *         specialty:
- *           type: string
- *           description: Especialidade do professor
- *         phone:
- *           type: string
- *           description: Número de telefone (opcional)
  *     StudentRegistration:
  *       type: object
  *       required:
@@ -103,7 +78,6 @@
  *         - email
  *         - password
  *         - userType
- *         - registration
  *       properties:
  *         name:
  *           type: string
@@ -120,16 +94,6 @@
  *           type: string
  *           enum: [student]
  *           description: Tipo de usuário (deve ser "student")
- *         registration:
- *           type: string
- *           description: Número de matrícula do aluno
- *         birthDate:
- *           type: string
- *           format: date
- *           description: Data de nascimento (opcional)
- *         phone:
- *           type: string
- *           description: Número de telefone (opcional)
  *     Login:
  *       type: object
  *       required:
@@ -401,15 +365,10 @@
  *             required:
  *               - name
  *               - email
- *               - specialty
  *             properties:
  *               name:
  *                 type: string
  *               email:
- *                 type: string
- *               specialty:
- *                 type: string
- *               phone:
  *                 type: string
  *     responses:
  *       201:
@@ -447,10 +406,6 @@
  *               name:
  *                 type: string
  *               email:
- *                 type: string
- *               specialty:
- *                 type: string
- *               phone:
  *                 type: string
  *     responses:
  *       200:
@@ -600,18 +555,10 @@
  *             required:
  *               - name
  *               - email
- *               - registration
  *             properties:
  *               name:
  *                 type: string
  *               email:
- *                 type: string
- *               registration:
- *                 type: string
- *               birthDate:
- *                 type: string
- *                 format: date
- *               phone:
  *                 type: string
  *     responses:
  *       201:
@@ -649,13 +596,6 @@
  *               name:
  *                 type: string
  *               email:
- *                 type: string
- *               registration:
- *                 type: string
- *               birthDate:
- *                 type: string
- *                 format: date
- *               phone:
  *                 type: string
  *     responses:
  *       200:
