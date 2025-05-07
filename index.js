@@ -11,9 +11,11 @@ const { swaggerUi, specs } = require("./Swagger/swagger");
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
+    origin: "*", // Allow all origins
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: false, // Disable credentials when using '*'
+  }),
 );
 
 app.use(express.json());
