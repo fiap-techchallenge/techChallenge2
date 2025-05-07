@@ -49,8 +49,8 @@ router.get("/:id", async (req, res) => {
 // POST /teachers - Criação de professores
 router.post("/", async (req, res) => {
   try {
-    const { name, email } = req.body;
-    const teacher = await Teacher.create({ name, email });
+    const { name, email, password } = req.body;
+    const teacher = await Teacher.create({ name, email, password });
     res.status(201).json(teacher);
   } catch (error) {
     if (
